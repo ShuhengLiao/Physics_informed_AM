@@ -239,8 +239,7 @@ if __name__ == '__main__':
         inv_params.append(Cp)
         k = torch.tensor(1e-5,requires_grad=True,device=device)
         inv_params.append(k)
-        
-        
+            
     l_history,err_history = train(net,PDE,BC,point_sets,flags,iterations,lr=lr,info_num=100,
                                         test_in = test_in,test_out = test_out,w=[1.,1e-4,1.,1e-4],
                                  inv_params = inv_params)
