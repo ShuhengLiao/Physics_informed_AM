@@ -177,7 +177,7 @@ if __name__ == '__main__':
     parser.add_argument('--data_num', type=int, default= 0, help='number of training data used, 0 for all data')
     parser.add_argument('--calib_eta',type=bool, default = False, help='calibrate eta')
     parser.add_argument('--calib_material',type=bool, default = False, help='calibrate cp and k')
-    parser.add_argument('--valid',type=str, default = '../data/bareplate/data.npy', help='validation data file')
+    parser.add_argument('--valid',type=str, default = '../data/1_forward/data.npy', help='validation data file')
     parser.add_argument('--pretrain',type=str, default = 'None', help='pretrained model file')
   
     args = parser.parse_args()
