@@ -127,20 +127,20 @@ def BC(x,y,z,t,net,loc):
         return k*T_x - h*(T-T_ref) - Rboltz*emiss*(T**4-T_ref**4)
     if loc == '+x':
         T_x = grad(T,x,create_graph=True,grad_outputs=torch.ones_like(T))[0]
-        return -k*T_x - h*(T-T_ref) - Rboltz*emiss*(T**4-T_ref**4)
+        return k*T_x + h*(T-T_ref) + Rboltz*emiss*(T**4-T_ref**4)
     if loc == '-y':
         T_y = grad(T,y,create_graph=True,grad_outputs=torch.ones_like(T))[0]
         return k*T_y - h*(T-T_ref) - Rboltz*emiss*(T**4-T_ref**4)
     if loc == '+y':
         T_y = grad(T,y,create_graph=True,grad_outputs=torch.ones_like(T))[0]
-        return -k*T_y - h*(T-T_ref) - Rboltz*emiss*(T**4-T_ref**4)
+        return k*T_y + h*(T-T_ref) + Rboltz*emiss*(T**4-T_ref**4)
     if loc == '-z':
         T_t = grad(T,t,create_graph=True,grad_outputs=torch.ones_like(T))[0]
         return T_t
     if loc == '+z':
         T_z = grad(T,z,create_graph=True,grad_outputs=torch.ones_like(T))[0]
         q = 2*P*eta/torch.pi/r**2*torch.exp(-2*(torch.square(x-x0-v*t)+torch.square(y-y0))/r**2)*(t<=t_end)*(t>0)
-        return -k*T_z - h*(T-T_ref) - Rboltz*emiss*(T**4-T_ref**4) + q
+        return k*T_z + h*(T-T_ref) + Rboltz*emiss*(T**4-T_ref**4) - q
     
     
 if __name__ == '__main__':
